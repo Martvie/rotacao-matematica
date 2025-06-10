@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 const OptionDiv = styled.div`
-    width: 8rem;
-    height: 5rem;
-    background-color: ${(props) => props.theme.colors.primary};
+    width: 100%;
+    height: 3rem;
+    background-color: ${(props) => props.theme.colors.quaternary};
+    color: ${(props) => props.theme.colors.text.dark};
+    font-size: 0.8rem;
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     font-weight: bold;
-    font-size: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -31,14 +31,8 @@ const OptionDiv = styled.div`
 
 interface OptionProps {
     content: string;
-    className?: string;
-    onClick?: () => void;
 }
 
-export const Option = ({ content, className, onClick }: OptionProps) => {
-    return (
-        <OptionDiv className={className} onClick={onClick}>
-            {content}
-        </OptionDiv>
-    );
+export const ColumnOption = ({ content }: OptionProps) => {
+    return <OptionDiv>{content}</OptionDiv>;
 };

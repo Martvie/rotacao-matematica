@@ -1,11 +1,11 @@
 import { useState } from "react";
 import styled from "styled-components";
 import useTimer from "../../hooks/timer";
-import { verify } from "../../utils/verify";
 import { BigButton } from "../bigButton";
+import { ColumnOption } from "../columnOption";
+import { Draggable } from "../draggable";
 import { Header } from "../header";
 import { Question } from "../question";
-import { Validator } from "../validator";
 
 const Div = styled.div`
     display: flex;
@@ -14,6 +14,19 @@ const Div = styled.div`
     justify-content: center;
 
     height: 98vh;
+`;
+
+const DivQuestions = styled.div`
+    background-color: #fff;
+    width: 50%;
+    min-width: 9rem;
+    min-height: 23rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
 `;
 
 const H2 = styled.h2`
@@ -27,30 +40,28 @@ const Message = styled.div`
     flex-direction: column;
 `;
 
-interface IQuesiton {
-    question: { title: string; description: string; result: string };
-    children: any;
+interface DraggableItem {
+    content: string;
+    correctPosition: number; // Índice da posição correta
 }
 
-export const QuestionInput = ({ question, children }: IQuesiton) => {
-    const [respota, setResposta] = useState("");
+interface IQuesiton {
+    question: { title: string; description: string; myItens: DraggableItem[] };
+}
+
+export const ReorderPage = ({ question }: IQuesiton) => {
     const [equipe, setEquipe] = useState("");
     const [finalizado, setFinalizado] = useState(false);
     const { time, start, pause, reset } = useTimer();
 
     const finalizar = () => {
-        if (verify(question.result, respota)) {
-            pause();
-            setFinalizado(true);
-        } else {
-            setResposta("");
-        }
+        pause();
+        setFinalizado(true);
     };
 
     const handleReiniciar = () => {
         reset();
         setFinalizado(false);
-        setResposta("");
     };
     const handleTime = (segundos: number) => {
         if (segundos < 60) {
@@ -84,9 +95,14 @@ export const QuestionInput = ({ question, children }: IQuesiton) => {
                         ) : (
                             <>
                                 <Question title={question.title} description={question.description}>
-                                    {children}
+                                    <DivQuestions>
+                                        <ColumnOption content="4x³y + 8xy³"></ColumnOption>
+                                        <ColumnOption content="x²y+xy²+2xy"></ColumnOption>
+                                        <ColumnOption content="3x²y+6xy²"></ColumnOption>
+                                        <ColumnOption content="2x²y-4xy²+6xy"></ColumnOption>
+                                    </DivQuestions>
+                                    <Draggable initialItems={question.myItens} onComplete={finalizar} />
                                 </Question>
-                                <Validator value={respota} onChange={(event) => setResposta(event.target.value)} onClick={finalizar} />
                             </>
                         )}
                     </>

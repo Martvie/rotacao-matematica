@@ -19,10 +19,10 @@ export const Home = () => {
         <>
             <Header />
             <MainContainer>
-                <IconNavigate link="bla" logo={input} />
-                <IconNavigate link="bla" logo={list} />
-                <IconNavigate link="bla" logo={card} />
-                <IconNavigate link="bla" logo={safe} />
+                <IconNavigate link="/01" logo={input} />
+                <IconNavigate link="/02" logo={list} />
+                <IconNavigate link="/03" logo={card} />
+                <IconNavigate link="./" logo={safe} />
                 {/* Outros componentes */}
             </MainContainer>
         </>

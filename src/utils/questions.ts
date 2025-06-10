@@ -7,7 +7,7 @@ interface Iquestion {
 export const questões: Iquestion[] = [
     {
         title: "Questão 01",
-        description: "Determine a expressão algébrica que correspondem a área da superfície total e o volume do paralelepípedo a seguir",
+        description: "Determine a expressão algébrica que correspondem a área da superfície total do paralelepípedo a seguir",
         result: "4xy + 2x²",
     },
     {

@@ -34,12 +34,12 @@ const OptionsGrid = styled.div`
 export const Sorter = ({ onComplete, initialOptions: propOptions }: SorterProps) => {
     // Opções padrão caso não sejam fornecidas via props
     const defaultOptions: GameOption[] = [
-        { id: 1, type: "equation", content: "A", pairId: 1 },
-        { id: 2, type: "equation", content: "B", pairId: 2 },
-        { id: 3, type: "equation", content: "C", pairId: 3 },
-        { id: 4, type: "answer", content: "A", pairId: 1 },
-        { id: 5, type: "answer", content: "B", pairId: 2 },
-        { id: 6, type: "answer", content: "C", pairId: 3 },
+        { id: 1, type: "equation", content: "x²-5x+6=0", pairId: 1 },
+        { id: 2, type: "equation", content: "3x²+9x-12=0", pairId: 2 },
+        { id: 3, type: "equation", content: "x²-10x+25=0", pairId: 3 },
+        { id: 4, type: "answer", content: "X1= 3 , X2= 2", pairId: 1 },
+        { id: 5, type: "answer", content: "X1 = -1, X2 = -4", pairId: 2 },
+        { id: 6, type: "answer", content: "X1 = 5, X2 = 5", pairId: 3 },
     ];
 
     // Usa as opções passadas como prop ou as padrão

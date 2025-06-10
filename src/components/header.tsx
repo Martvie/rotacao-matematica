@@ -17,7 +17,9 @@ const Img = styled.img`
 export const Header = () => {
     return (
         <HeaderContainer>
-            <Img src={home} />
+            <a href="./">
+                <Img src={home} />
+            </a>
         </HeaderContainer>
     );
 };
