@@ -29,7 +29,7 @@ const Message = styled.div`
 
 interface IQuesiton {
     question: { title: string; description: string; result: string };
-    children: any;
+    children?: any;
 }
 
 export const QuestionInput = ({ question, children }: IQuesiton) => {

@@ -1,7 +1,7 @@
 interface Iquestion {
     title: string;
     description: string;
-    result: number | string | [];
+    result: string;
 }
 
 export const questões: Iquestion[] = [
@@ -13,16 +13,16 @@ export const questões: Iquestion[] = [
     {
         title: "Questão 02",
         description: "Bla bla",
-        result: 0,
+        result: "0",
     },
     {
         title: "Questão 03",
         description: "Bla bla",
-        result: 2,
+        result: "2",
     },
     {
         title: "Questão 04",
         description: "Bla bla",
-        result: 2,
+        result: "2",
     },
 ];

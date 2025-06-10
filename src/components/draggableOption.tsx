@@ -35,6 +35,8 @@ interface OptionProps {
     className?: string;
     onClick?: () => void;
     index: number;
+    isCorrect?: boolean;
+    isSolved?: boolean;
 }
 
 export const DraggableOption = ({ content, className, onClick, index }: OptionProps) => {
