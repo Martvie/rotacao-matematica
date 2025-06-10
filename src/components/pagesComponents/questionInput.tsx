@@ -16,6 +16,10 @@ const Div = styled.div`
     height: 98vh;
 `;
 
+const H2 = styled.h2`
+    color: ${(props) => props.theme.colors.text.light};
+`;
+
 const Message = styled.div`
     display: flex;
     gap: 1rem;
@@ -63,17 +67,16 @@ export const QuestionInput = ({ question }: IQuesiton) => {
             <Div>
                 {finalizado ? (
                     <Message>
-                        <h2>
+                        <H2>
                             Equipe {equipe} terminou em {handleTime(time)} segundos!
-                        </h2>
+                        </H2>
                         <BigButton name="Reiniciar" onClick={handleReiniciar} />
                     </Message>
                 ) : (
                     <>
-                        <div>Tempo: {time}s</div>
                         {time === 0 ? (
                             <Message>
-                                <h2>Nome da equipe</h2>
+                                <H2>Nome da equipe</H2>
                                 <input onChange={(event) => setEquipe(event.target.value)} />
                                 <BigButton name="Começar" onClick={start} />
                             </Message>

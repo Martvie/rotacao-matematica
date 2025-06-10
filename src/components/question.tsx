@@ -6,7 +6,7 @@ const Main = styled.main`
     width: 95%;
     height: 30rem;
 
-    border: 5px solid #39c5ca;
+    border: 5px solid ${(props) => props.theme.colors.secondary};
     border-top-width: 20px;
     border-radius: 8px 8px 0 0;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
@@ -15,12 +15,13 @@ const Main = styled.main`
 `;
 
 const Wrapper = styled.div`
-    background-color: #39c5ca;
+    background-color: ${(props) => props.theme.colors.secondary};
     padding: 0.5rem;
 `;
 
 const H2 = styled.h2`
     font-size: 2rem;
+    color: ${(props) => props.theme.colors.text.light};
 `;
 
 const P = styled.p`
@@ -29,10 +30,13 @@ const P = styled.p`
 `;
 
 const Section = styled.section`
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    height: 20rem;
-    background-color: rebeccapurple;
+    height: 83%;
     padding: 0.5rem;
+    background-color: ${(props) => props.theme.colors.quaternary};
 `;
 
 interface Iquestion {
@@ -48,7 +52,7 @@ export const Question = ({ title, description, children }: Iquestion) => {
                 <H2>{title}</H2>
                 <P>{description}</P>
             </Wrapper>
-            {children && <Section>{children}</Section>}
+            {<Section>{children}</Section>}
         </Main>
     );
 };

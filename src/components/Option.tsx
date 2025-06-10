@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 const OptionDiv = styled.div`
-    width: 15rem;
+    width: 8rem;
     height: 5rem;
-    background-color: #39c5ca;
+    background-color: ${(props) => props.theme.colors.primary};
     border-radius: 0.5rem;
     display: flex;
     justify-content: center;
@@ -16,8 +16,7 @@ const OptionDiv = styled.div`
     padding: 0.5rem;
 
     &:hover {
-        width: 15.5rem;
-        height: 5.5rem;
+        transform: scale(1.1);
     }
 
     &.selected {
@@ -25,9 +24,7 @@ const OptionDiv = styled.div`
     }
 
     &.select {
-        background-color: #4caf50;
-        width: 15.5rem;
-        height: 5.5rem;
+        background-color: ${(props) => props.theme.colors.tertiary};
     }
 `;
 

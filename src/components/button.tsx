@@ -32,7 +32,7 @@ const ButtonContainer = styled.button`
 
     &:after {
         background-clip: padding-box;
-        background-color: #8a5c84;
+        background-color: ${(props) => props.theme.colors.primary};
         border: solid transparent;
         border-radius: 16px;
         border-width: 0 0 4px;

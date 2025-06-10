@@ -13,15 +13,15 @@ type GameOption = {
 
 interface SorterProps {
     onComplete?: () => void;
+    initialOptions?: GameOption[]; // Adicionando a nova prop
 }
 
 const GameContainer = styled.div`
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
 `;
 
 const OptionsGrid = styled.div`
@@ -31,25 +31,19 @@ const OptionsGrid = styled.div`
     max-width: 800px;
 `;
 
-const Message = styled.div`
-    font-size: 2rem;
-    color: #4caf50;
-    font-weight: bold;
-    padding: 1rem;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-`;
-
-export const Sorter = ({ onComplete }: SorterProps) => {
-    // Adicionamos pairId para facilitar o pareamento
-    const initialOptions: GameOption[] = [
-        { id: 1, type: "equation", content: "x² - 5x + 6 = 0", pairId: 1 },
-        { id: 2, type: "equation", content: "x² + 3x - 10 = 0", pairId: 2 },
-        { id: 3, type: "equation", content: "2x² - 8x = 0", pairId: 3 },
-        { id: 4, type: "answer", content: "x₁=2, x₂=3", pairId: 1 },
-        { id: 5, type: "answer", content: "x₁=0, x₂=4", pairId: 3 },
-        { id: 6, type: "answer", content: "x₁=2, x₂=-5", pairId: 2 },
+export const Sorter = ({ onComplete, initialOptions: propOptions }: SorterProps) => {
+    // Opções padrão caso não sejam fornecidas via props
+    const defaultOptions: GameOption[] = [
+        { id: 1, type: "equation", content: "A", pairId: 1 },
+        { id: 2, type: "equation", content: "B", pairId: 2 },
+        { id: 3, type: "equation", content: "C", pairId: 3 },
+        { id: 4, type: "answer", content: "A", pairId: 1 },
+        { id: 5, type: "answer", content: "B", pairId: 2 },
+        { id: 6, type: "answer", content: "C", pairId: 3 },
     ];
+
+    // Usa as opções passadas como prop ou as padrão
+    const initialOptions = propOptions || defaultOptions;
 
     const [gameOptions, setGameOptions] = useState<GameOption[]>([]);
     const [firstSelection, setFirstSelection] = useState<GameOption | null>(null);
@@ -117,15 +111,11 @@ export const Sorter = ({ onComplete }: SorterProps) => {
 
     return (
         <GameContainer>
-            {isGameCompleted() ? (
-                <Message>Parabéns! Você completou o jogo!</Message>
-            ) : (
-                <OptionsGrid>
-                    {gameOptions.map((option) => (
-                        <Option key={option.id} content={option.content} className={`options ${getOptionClass(option)}`} onClick={() => handleOptionClick(option)} />
-                    ))}
-                </OptionsGrid>
-            )}
+            <OptionsGrid>
+                {gameOptions.map((option) => (
+                    <Option key={option.id} content={option.content} className={`options ${getOptionClass(option)}`} onClick={() => handleOptionClick(option)} />
+                ))}
+            </OptionsGrid>
         </GameContainer>
     );
 };

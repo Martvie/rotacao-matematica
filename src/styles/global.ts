@@ -16,6 +16,6 @@ export default createGlobalStyle`
 
         height: 100vh;
 
-        background-color: #f2faff;
+        background-color: ${(props) => props.theme.colors.primary};
     }
 `;
